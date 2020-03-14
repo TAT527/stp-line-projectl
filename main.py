@@ -44,20 +44,6 @@ def callback():
         abort(400)
     return 'OK'
 
-# LINEでMessageEvent（普通のメッセージを送信された場合）が起こった場合
-# reply_messageの第一引数のevent.reply_tokenは、イベントの応答に用いるトークンです。 
-# 第二引数には、linebot.modelsに定義されている返信用のTextSendMessageオブジェクトを渡しています。
-@handler.add(MessageEvent, message = TextMessage)
-def handle_message(event):
-    #入力された内容(event.message.text)に応じて返信する
-    line_bot_api.reply_message(
-    event.reply_token,
-    TextSendMessage(text = os.environ[response.getResponse(event.message.response)])
-    )
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.getenv("PORT", 5000)))
-
 def build_prompt(unmo):
     """AIインスタンスを取り、AIとResponderの名前を整形して返す"""
     return '{name}:{responder}> '.format(name=unmo.name,
@@ -81,3 +67,17 @@ if __name__ == '__main__':
             print('{prompt}{response}'.format(prompt=build_prompt(Lala),
                                               response=response))
 Lala.save()
+# LINEでMessageEvent（普通のメッセージを送信された場合）が起こった場合
+# reply_messageの第一引数のevent.reply_tokenは、イベントの応答に用いるトークンです。 
+# 第二引数には、linebot.modelsに定義されている返信用のTextSendMessageオブジェクトを渡しています。
+@handler.add(MessageEvent, message = TextMessage)
+def handle_message(event):
+    #入力された内容(event.message.text)に応じて返信する
+    line_bot_api.reply_message(
+    event.reply_token,
+    TextSendMessage(text = os.environ[response.getResponse(event.message.response)])
+    )
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=int(os.getenv("PORT", 5000)))
+
