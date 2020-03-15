@@ -54,7 +54,7 @@ if __name__ == '__main__':
     Lala = Unmo('Lala')
     #while True:
         #text = TextMessage
-response = "test"
+response = Lala.dialogue(text="おにぎり")
 ## 2 ##
 ###############################################
 #LINEのメッセージの取得と返信内容の設定(オウム返し)
