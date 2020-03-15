@@ -67,11 +67,10 @@ if __name__ == '__main__':
 def handle_message(event):
     while True:
         text = event.message.text
-        response = Lala.dialogue(text)
 
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(response)) #ここでオウム返しのメッセージを返します。
+        TextSendMessage(Lala.dialogue(text))) #ここでオウム返しのメッセージを返します。
 # ポート番号の設定
 if __name__ == "__main__":
 #    app.run()
