@@ -58,7 +58,7 @@ def handle_message(event,Unmo):
     Lala = Unmo('Lala')
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=Lala.dialogue(event.message.Text))) #ここでオウム返しのメッセージを返します。
+        TextSendMessage(text=Lala.dialogue(event.message.text))) #ここでオウム返しのメッセージを返します。
  
 # ポート番号の設定
 if __name__ == "__main__":
