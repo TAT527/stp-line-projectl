@@ -26,7 +26,7 @@ class Dictionary:
     markov -- マルコフ辞書
     """
 
-    DICT_DIR = os.path.join(str(Path.home()), 'mysterious-dawn-25067' 'dics')
+    DICT_DIR = os.path.join(str(Path.home()), 'stp-line-projectl' 'dics')
     DICT = {
         'random': 'random.txt',
         'pattern': 'pattern.txt',
