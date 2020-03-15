@@ -52,8 +52,8 @@ def build_prompt(unmo):
 
 if __name__ == '__main__':
     Lala = Unmo('Lala')
-    while True:
-        text = TextMessage
+    #while True:
+        #text = TextMessage
 response = "test"
 ## 2 ##
 ###############################################
