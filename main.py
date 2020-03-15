@@ -50,10 +50,10 @@ def build_prompt(unmo):
                                          responder=unmo.responder_name)
 
 
-#if __name__ == '__main__':
-    #Lala = Unmo('Lala')
-    #while True:
-        #text = TextMessage
+if __name__ == '__main__':
+    Lala = Unmo('Lala')
+    while True:
+        text = TextMessage
 response = "test"
 ## 2 ##
 ###############################################
