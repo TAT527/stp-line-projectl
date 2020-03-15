@@ -1,5 +1,5 @@
 from flask import Flask, request, abort
- 
+from unmo import Unmo
 from linebot import (
     LineBotApi, WebhookHandler
 )
@@ -42,7 +42,19 @@ def callback():
         abort(400)
 # handleの処理を終えればOK
     return 'OK'
- 
+
+
+#def build_prompt(unmo):
+    #"""AIインスタンスを取り、AIとResponderの名前を整形して返す"""
+    #return '{name}:{responder}> '.format(name=unmo.name,
+                                         #responder=unmo.responder_name)
+
+
+#if __name__ == '__main__':
+    #Lala = Unmo('Lala')
+    #while True:
+        #text = TextMessage
+response = "test"
 ## 2 ##
 ###############################################
 #LINEのメッセージの取得と返信内容の設定(オウム返し)
@@ -57,7 +69,7 @@ def callback():
 def handle_message(event):
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text="テスト成功ルン♪")) #ここでオウム返しのメッセージを返します。
+        TextSendMessage(text=response)) #ここでオウム返しのメッセージを返します。
  
 # ポート番号の設定
 if __name__ == "__main__":
