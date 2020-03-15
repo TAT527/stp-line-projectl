@@ -55,7 +55,7 @@ def callback():
 #reply_messageの第一引数のevent.reply_tokenは、イベントの応答に用いるトークンです。 
 #第二引数には、linebot.modelsに定義されている返信用のTextSendMessageオブジェクトを渡しています。
  
-@handler.add(MessageEvent, message=TextMessage)
+
 def build_prompt(unmo):
     """AIインスタンスを取り、AIとResponderの名前を整形して返す"""
     return '{name}:{responder}> '.format(name=unmo.name,
@@ -64,6 +64,7 @@ if __name__ == '__main__':
     print('Unmo System prototype : Lala')
     Lala = Unmo('Lala')
 
+@handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     while True:
         text = event.message.text
