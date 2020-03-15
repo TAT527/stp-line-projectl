@@ -72,7 +72,8 @@ if __name__ == "__main__":
 if __name__ == '__main__':
     Lala = Unmo('Lala')
     while True:
-        text = input('> ')
+        message=TextMessage
+        text = message
         if not text:
             break
 
