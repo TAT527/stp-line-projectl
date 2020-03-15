@@ -65,8 +65,7 @@ if __name__ == "__main__":
     port = int(os.getenv("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
     def build_prompt(unmo):
-    """AIインスタンスを取り、AIとResponderの名前を整形して返す"""
-    return '{name}:{responder}> '.format(name=unmo.name,
+        return '{name}:{responder}> '.format(name=unmo.name,
                                          responder=unmo.responder_name)
 
 
@@ -83,5 +82,4 @@ if __name__ == '__main__':
             print('{}: {}'.format(type(error).__name__, str(error)))
             print('警告: 辞書が空です。(Responder: {})'.format(Lala.responder_name))
         else:
-            print('{prompt}{response}'.format(prompt=build_prompt(Lala),
-                                              response=response))
+            TextSendMessage = Lala.dialogue(text)
