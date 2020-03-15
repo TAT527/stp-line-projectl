@@ -67,11 +67,11 @@ if __name__ == '__main__':
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     while True:
-        text = event.message.text
+        text = event.message
 
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage("原因の切り分けチェック") #ここでオウム返しのメッセージを返します。
+        TextSendMessage(text="原因の切り分けチェック"))
 # ポート番号の設定
 if __name__ == "__main__":
 #    app.run()
