@@ -36,9 +36,9 @@ class Dictionary:
 
     def __init__(self):
         """ファイルから辞書の読み込みを行う。"""
-        self._random = Dictionary.load_random(Dictionary.dicfile('random'))
-        self._pattern = Dictionary.load_pattern(Dictionary.dicfile('pattern'))
-        self._template = Dictionary.load_template(Dictionary.dicfile('template'))
+        self._random = Dictionary.load_random()
+        self._pattern = Dictionary.load_pattern()
+        self._template = Dictionary.load_template()
         self._markov = Dictionary.load_markov(Dictionary.dicfile('markov'))
 
     def study(self, text, parts):
