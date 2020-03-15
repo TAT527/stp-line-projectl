@@ -60,13 +60,13 @@ def build_prompt(unmo):
     """AIインスタンスを取り、AIとResponderの名前を整形して返す"""
     return '{name}:{responder}> '.format(name=unmo.name,
                                          responder=unmo.responder_name)
-
-
 if __name__ == '__main__':
     print('Unmo System prototype : Lala')
     Lala = Unmo('Lala')
+
+def handle_message(event):
     while True:
-        text = TextMessage
+        text = event.message.text
         if not text:
             break
 
@@ -78,12 +78,10 @@ if __name__ == '__main__':
         else:
             print('{prompt}{response}'.format(prompt=build_prompt(Lala),
                                               response=response))
-Lala.save()
-def handle_message(event):
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(event.message.response)) #ここでオウム返しのメッセージを返します。
- 
+        TextSendMessage(response)) #ここでオウム返しのメッセージを返します。
+    Lala.save()
 # ポート番号の設定
 if __name__ == "__main__":
 #    app.run()
