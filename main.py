@@ -74,13 +74,4 @@ if __name__ == '__main__':
     while True:
         message=TextMessage
         text = message
-        if not text:
-            break
-
-        try:
-            TextSendMessage = Lala.dialogue(text)
-        except IndexError as error:
-            print('{}: {}'.format(type(error).__name__, str(error)))
-            print('警告: 辞書が空です。(Responder: {})'.format(Lala.responder_name))
-        else:
-            TextSendMessage = Lala.dialogue(text)
+        TextSendMessage = Lala.dialogue(text)
