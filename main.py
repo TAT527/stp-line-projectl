@@ -67,21 +67,11 @@ if __name__ == '__main__':
 def handle_message(event):
     while True:
         text = event.message.text
-        if not text:
-            break
+        response = Lala.dialogue(text)
 
-        try:
-            response = Lala.dialogue(text)
-        except IndexError as error:
-            print('{}: {}'.format(type(error).__name__, str(error)))
-            print('警告: 辞書が空です。(Responder: {})'.format(Lala.responder_name))
-        else:
-            print('{prompt}{response}'.format(prompt=build_prompt(Lala),
-                                              response=response))
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(response)) #ここでオウム返しのメッセージを返します。
-    Lala.save()
 # ポート番号の設定
 if __name__ == "__main__":
 #    app.run()
