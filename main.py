@@ -44,10 +44,10 @@ def callback():
     return 'OK'
 
 
-#def build_prompt(unmo):
-    #"""AIインスタンスを取り、AIとResponderの名前を整形して返す"""
-    #return '{name}:{responder}> '.format(name=unmo.name,
-                                         #responder=unmo.responder_name)
+def build_prompt(unmo):
+    """AIインスタンスを取り、AIとResponderの名前を整形して返す"""
+    return '{name}:{responder}> '.format(name=unmo.name,
+                                         responder=unmo.responder_name)
 
 
 #if __name__ == '__main__':
