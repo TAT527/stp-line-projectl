@@ -54,7 +54,7 @@ if __name__ == '__main__':
     Lala = Unmo('Lala')
     while True:
         text = TextMessage
-        response = "test"
+        response = text("test")
 
 ## 2 ##
 ###############################################
