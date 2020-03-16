@@ -67,7 +67,7 @@ def handle_message(event):
     	Lala = Unmo('Lala')
     #while True:
         #text = TextMessage
-    response = Lala.dialogue(text=event.message)
+    response = Lala.dialogue(text=message)
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=response)) #ここでオウム返しのメッセージを返します。
