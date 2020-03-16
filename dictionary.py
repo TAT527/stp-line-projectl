@@ -41,22 +41,22 @@ class Dictionary:
         self._template = Dictionary.load_template()
         self._markov = Dictionary.load_markov(Dictionary.dicfile('markov'))
 
-    def study(self, text, parts):
-        """ランダム辞書、パターン辞書、テンプレート辞書をメモリに保存する。"""
+    #def study(self, text, parts):
+        #"""ランダム辞書、パターン辞書、テンプレート辞書をメモリに保存する。"""
         #self.study_random(text)
         #self.study_pattern(text, parts)
         #self.study_template(parts)
         #self.study_markov(parts)
 
-    def study_markov(self, parts):
-        """形態素のリストpartsを受け取り、マルコフ辞書に学習させる。"""
+    #def study_markov(self, parts):
+        #"""形態素のリストpartsを受け取り、マルコフ辞書に学習させる。"""
         #self._markov.add_sentence(parts)
 
-    def study_template(self, parts):
-        """形態素のリストpartsを受け取り、
-        名詞のみ'%noun%'に変更した文字列templateをself._templateに追加する。
-        名詞が存在しなかった場合、または同じtemplateが存在する場合は何もしない。
-        """
+    #def study_template(self, parts):
+        #"""形態素のリストpartsを受け取り、
+        #名詞のみ'%noun%'に変更した文字列templateをself._templateに追加する。
+        #名詞が存在しなかった場合、または同じtemplateが存在する場合は何もしない。
+        #"""
         #template = ''
         #count = 0
         #for word, part in parts:
@@ -68,14 +68,14 @@ class Dictionary:
         #if count > 0 and template not in self._template[count]:
             #self._template[count].append(template)
 
-    def study_random(self, text):
-        """ユーザーの発言textをランダム辞書に保存する。
-        すでに同じ発言があった場合は何もしない。"""
+    #def study_random(self, text):
+        #"""ユーザーの発言textをランダム辞書に保存する。
+        #すでに同じ発言があった場合は何もしない。"""
         #if text not in self._random:
             #self._random.append(text)
 
-    def study_pattern(self, text, parts):
-        """ユーザーの発言textを、形態素partsに基づいてパターン辞書に保存する。"""
+    #def study_pattern(self, text, parts):
+        #"""ユーザーの発言textを、形態素partsに基づいてパターン辞書に保存する。"""
         #for word, part in parts:
             #if not is_keyword(part) or word != 'ルン' or word != '♪' or word != '♥':  # 品詞が名詞でなければ学習しない
                 #continue
@@ -89,19 +89,19 @@ class Dictionary:
             #else:
                 #self._pattern.append({'pattern': word, 'phrases': [text]})
 
-    def save(self):
-        """メモリ上の辞書をファイルに保存する。"""
+    #def save(self):
+        #"""メモリ上の辞書をファイルに保存する。"""
         #dic_markov = os.path.join(Dictionary.DICT_DIR, Dictionary.DICT['markov'])
         #self._save_random()
         #self._save_pattern()
         #self._save_template()
         #self._markov.save(dic_markov)
 
-    def save_dictionary(dict_key):
-        """
-        辞書を保存するためのファイルを開くデコレータ。
-        dict_key - Dictionary.DICTのキー。
-        """
+    #def save_dictionary(dict_key):
+        #"""
+        #辞書を保存するためのファイルを開くデコレータ。
+        #dict_key - Dictionary.DICTのキー。
+        #"""
         #def _save_dictionary(func):
             #@functools.wraps(func)
             #def wrapper(self, *args, **kwargs):
@@ -117,29 +117,29 @@ class Dictionary:
             #return wrapper
         #return _save_dictionary
 
-    @save_dictionary('template')
-    def _save_template(self):
-        """テンプレート辞書を保存する。"""
+    #@save_dictionary('template')
+    #def _save_template(self):
+        #"""テンプレート辞書を保存する。"""
         #lines = []
         #for count, templates in self._template.items():
             #for template in templates:
                 #lines.append('{}\t{}'.format(count, template))
         #return '\n'.join(lines)
 
-    @save_dictionary('pattern')
-    def _save_pattern(self):
-        """パターン辞書を保存する。"""
+    #@save_dictionary('pattern')
+    #def _save_pattern(self):
+        #"""パターン辞書を保存する。"""
         #lines = [Dictionary.pattern2line(p) for p in self._pattern]
         #return '\n'.join(lines)
 
-    @save_dictionary('random')
-    def _save_random(self):
-        """ランダム辞書を保存する。"""
+    #@save_dictionary('random')
+    #def _save_random(self):
+        #"""ランダム辞書を保存する。"""
         #return '\n'.join(self.random)
 
     def _find_duplicated_pattern(self, word):
         """パターン辞書に名詞wordがあればパターンハッシュを、無ければNoneを返す。"""
-        #return next((p for p in self._pattern if p['pattern'] == word), None)
+        return next((p for p in self._pattern if p['pattern'] == word), None)
 
     def load_dictionary(dict_key):
         """辞書ファイルを読み込むためのデコレータ"""
