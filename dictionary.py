@@ -143,17 +143,17 @@ class Dictionary:
 
     def load_dictionary(dict_key):
         """辞書ファイルを読み込むためのデコレータ"""
-        #def _load_dictionary(func):
-            #@functools.wraps(func)
-            #def wrapper(*args, **kwargs):
-                #"""ファイルを読み込み、行ごとに分割して関数に渡す"""
-                #dicfile = os.path.join(Dictionary.DICT_DIR, Dictionary.DICT[dict_key])
-                #if not os.path.exists(dicfile):
-                    #return func([], *args, **kwargs)
-                #with open(dicfile, encoding='utf-8') as f:
-                    #return func(f.read().splitlines(), *args, **kwargs)
-            #return wrapper
-        #return _load_dictionary
+        def _load_dictionary(func):
+            @functools.wraps(func)
+            def wrapper(*args, **kwargs):
+                """ファイルを読み込み、行ごとに分割して関数に渡す"""
+                dicfile = os.path.join(Dictionary.DICT_DIR, Dictionary.DICT[dict_key])
+                if not os.path.exists(dicfile):
+                    return func([], *args, **kwargs)
+                with open(dicfile, encoding='utf-8') as f:
+                    return func(f.read().splitlines(), *args, **kwargs)
+            return wrapper
+        return _load_dictionary
 
     @staticmethod
     @load_dictionary('random')
