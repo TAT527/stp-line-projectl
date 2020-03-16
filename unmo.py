@@ -50,12 +50,12 @@ class Unmo:
 
         parts = analyze(text)
         response = self._responder.response(text, parts)
-        self._dictionary.study(text, parts)
+        #self._dictionary.study(text, parts)
         return response
 
-    def save(self):
-        """Dictionaryへの保存を行う。"""
-        self._dictionary.save()
+    #def save(self):
+        #"""Dictionaryへの保存を行う。"""
+        #self._dictionary.save()
 
     @property
     def name(self):
