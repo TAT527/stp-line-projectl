@@ -36,11 +36,11 @@ class Unmo:
         呼び出されるたびにランダムでResponderを切り替える。
         入力をDictionaryに学習させる。"""
         chance = randrange(0, 100)
-        if chance in range(0, 70):
+        if chance in range(0, 85):
             self._responder = self._responders['pattern']
-        elif chance in range(71, 72):
+        elif chance in range(86, 87):
             self._responder = self._responders['template']
-        elif chance in range(73, 80):
+        elif chance in range(88, 89):
             self._responder = self._responders['random']
         #elif chance in range(70, 100):
         else:
