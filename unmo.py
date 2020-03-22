@@ -1,14 +1,14 @@
 from random import randrange
 from janome.tokenizer import Tokenizer
 from morph_ import analyze
-from responder import WhatResponder, AbsoluteResponder, RandomResponder, PatternResponder, TemplateResponder, MarkovResponder
+from responder import WhatResponder, RandomResponder, PatternResponder, TemplateResponder, MarkovResponder
 from dictionary import Dictionary
 
 
 class Unmo:
     """人工無脳コアクラス。
     プロパティ:
-    name -- 人工無脳コアの名前S
+    name -- 人工無脳コアの名前
     responder_name -- 現在の応答クラスの名前
     """
 
@@ -22,8 +22,7 @@ class Unmo:
         self._dictionary = Dictionary()
 
         self._responders = {
-            'what': WhatResponder('What', self._dictionary),
-            'absolute': AbsoluteResponder('Absolute', self._dictionary),
+            'what':   WhatResponder('What', self._dictionary),
             'random': RandomResponder('Random', self._dictionary),
             'pattern': PatternResponder('Pattern', self._dictionary),
             'template': TemplateResponder('Template', self._dictionary),
@@ -37,19 +36,17 @@ class Unmo:
         呼び出されるたびにランダムでResponderを切り替える。
         入力をDictionaryに学習させる。"""
         chance = randrange(0, 100)
-        self._responder = self._responders['absolute']
-        if self._responder.response(text) == '':
-            if chance in range(0, 85):
-                self._responder = self._responders['pattern']
-            elif chance in range(86, 87):
-                self._responder = self._responders['template']
-            #elif chance in range(88, 89):
-                #self._responder = self._responders['random']
-            #elif chance in range(70, 100):
-            else:
-                self._responder = self._responders['markov']
-            #else:
-                #self._responder = self._responders['what']
+        if chance in range(0, 85):
+            self._responder = self._responders['pattern']
+        elif chance in range(86, 87):
+            self._responder = self._responders['template']
+        elif chance in range(88, 89):
+            self._responder = self._responders['random']
+        #elif chance in range(70, 100):
+        else:
+            self._responder = self._responders['markov']
+        #else:
+            #self._responder = self._responders['what']
 
         parts = analyze(text)
         response = self._responder.response(text, parts)

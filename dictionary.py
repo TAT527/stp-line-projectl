@@ -36,7 +36,6 @@ class Dictionary:
 
     def __init__(self):
         """ファイルから辞書の読み込みを行う。"""
-        self._absolute = Dictionary.load_absolute()
         self._random = Dictionary.load_random()
         self._pattern = Dictionary.load_pattern()
         self._template = Dictionary.load_template()
@@ -161,13 +160,7 @@ class Dictionary:
     def load_random(lines):
         """ランダム辞書を読み込み、リストを返す。
         空である場合、['こんにちは']という一文を追加する。"""
-        return lines if lines else ['いまララはいないでプルンス（エラーでプルンスよ）']
-
-    @staticmethod
-    @load_dictionary('absolute')
-    def load_absolute(lines):
-        """パターン辞書を読み込み、パターンハッシュのリストを返す。"""
-        return [Dictionary.line2pattern(l) for l in lines]
+        return lines if lines else ['こんにちは']
 
     @staticmethod
     @load_dictionary('pattern')
@@ -227,11 +220,6 @@ class Dictionary:
     def random(self):
         """ランダム辞書"""
         return self._random
-
-    @property
-    def absolute(self):
-        """パターン辞書"""
-        return self._absolute
 
     @property
     def pattern(self):
