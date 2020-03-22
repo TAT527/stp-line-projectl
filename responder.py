@@ -47,6 +47,19 @@ class RandomResponder(Responder):
         """ユーザーからの入力は受け取るが、使用せずにランダムな応答を返す。"""
         return choice(self._dictionary.random)
 
+class AbsoluteResponder(Responder):
+    """AIの応答を制御する思考エンジンクラス。
+    登録されたパターンに反応し、関連する応答を返す。
+    """
+
+    def response(self, text, _):
+        """ユーザーの入力に合致するパターンがあれば、関連するフレーズを返す。"""
+        for ptn in self._dictionary.absolute:
+            matcher = re.search(ptn['absolute'], text)
+            if matcher:
+                chosen_response = choice(ptn['phrases'])
+                return chosen_response.replace('%match%', matcher[0])
+        return
 
 class PatternResponder(Responder):
     """AIの応答を制御する思考エンジンクラス。
