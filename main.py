@@ -10,6 +10,7 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
 import os
+import gc
  
 app = Flask(__name__)
  
@@ -73,6 +74,7 @@ def handle_message(event):
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=response)) #ここでオウム返しのメッセージを返します。
+    gc.collect()
  
 # ポート番号の設定
 if __name__ == "__main__":
