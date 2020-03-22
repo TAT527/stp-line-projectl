@@ -29,6 +29,7 @@ class Dictionary:
     DICT_DIR = os.path.join(str(Path.home()), 'dics')
     DICT = {
         'random': 'random.txt',
+        'absolute': 'absolute.txt',
         'pattern': 'pattern.txt',
         'template': 'template.txt',
         'markov': 'markov.dat',
