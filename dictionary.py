@@ -161,7 +161,7 @@ class Dictionary:
     def load_random(lines):
         """ランダム辞書を読み込み、リストを返す。
         空である場合、['こんにちは']という一文を追加する。"""
-        return lines if lines else ['こんにちは']
+        return lines if lines else ['いまララはいないでプルンス（エラーでプルンスよ）']
 
     @staticmethod
     @load_dictionary('absolute')

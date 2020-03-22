@@ -59,7 +59,7 @@ class AbsoluteResponder(Responder):
             if matcher:
                 chosen_response = choice(ptn['phrases'])
                 return chosen_response.replace('%match%', matcher[0])
-        return ''
+        return
 
 class PatternResponder(Responder):
     """AIの応答を制御する思考エンジンクラス。
