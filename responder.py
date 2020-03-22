@@ -55,7 +55,7 @@ class AbsoluteResponder(Responder):
     def response(self, text, _):
         """ユーザーの入力に合致するパターンがあれば、関連するフレーズを返す。"""
         for ptn in self._dictionary.absolute:
-            matcher = re.search(ptn['absolute'], text)
+            matcher = re.search(ptn['pattern'], text)
             if matcher:
                 chosen_response = choice(ptn['phrases'])
                 return chosen_response.replace('%match%', matcher[0])
