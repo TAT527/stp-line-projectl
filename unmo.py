@@ -38,7 +38,8 @@ class Unmo:
         入力をDictionaryに学習させる。"""
         chance = randrange(0, 100)
         self._responder = self._responders['absolute']
-        if not self._responder:
+        parts = analyze(text)
+        if not self._responder.response(text, parts):
             if chance in range(0, 85):
                 self._responder = self._responders['pattern']
             elif chance in range(86, 87):
