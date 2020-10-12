@@ -75,6 +75,7 @@ def handle_message(event):
         event.reply_token,
         TextSendMessage(text=response)) #ここでオウム返しのメッセージを返します。
     gc.collect()
+    Lala.save()
  
 # ポート番号の設定
 if __name__ == "__main__":
